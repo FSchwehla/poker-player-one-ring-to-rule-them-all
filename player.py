@@ -191,4 +191,4 @@ class Player:
             bet_ammount = (self.minimum_raise + 50)
 
         print('debug_test_bet' + str(bet_ammount) + str(self.best_hand))
-        return bet_ammount
+        return int(bet_ammount)
