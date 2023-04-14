@@ -12,17 +12,17 @@ class Player:
 
         self.max_bet = 500
 
+        print('debug_test' + dir(game_state))
+        print('debug_test' + dir(game_state['community_cards']))
+
         cards = me['hole_cards']
         ccards = game_state['community_cards'] if 'community_cards' in game_state else 0
-        print('test_debug_ccards')
-        print(ccards)
+
         # Empty own Cards
         self.rank1 = None
         self.rank2 = None
         self.suit1 = None
         self.suit2 = None
-
-        print('test_log')
 
         # Define best hand
         self.hand_flop = None
@@ -42,7 +42,6 @@ class Player:
         # Set Ranks and Suits in Array
         if len(ccards) == 0:
             for ccard in ccards:
-                print('debug_test' + ccard['rank'])
                 self.cranks.append(ccard['rank'])
                 self.csuits.append(ccard['suit'])
             self.cranks.append(self.rank1)
