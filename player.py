@@ -35,13 +35,16 @@ class Player:
                 return  self.minimum_raise + 75
             elif self.rank1 == self.rank2:
                 self.log_raise()
-                return 50
+                if self.minimum_raise < 50:
+                    return 50
             elif self.suit1 == self.suit2:
                 self.log_raise()
-                return 20
+                if self.minimum_raise < 20:
+                    return 20
             elif value < 8 and (self.rank1 != 'A' or self.rank2 != 'A'):
                 self.log_raise()
-                return 10
+                if self.minimum_raise < 10:
+                    return 10
 
         amount = current_buy_in - me['bet']
         if amount > self.MAX_BET and self.rank1 != self.rank2:
@@ -57,20 +60,20 @@ class Player:
     def showdown(self, game_state):
         return True
 
-    def log_check(self):
-        if self.rank1:
-            print('{} {}: CHECK only'.format(self.rank1, self.rank2))
-        else:
-            print('CHECK only')
-
-    def log_call(self, amount):
-        if self.rank1:
-            print('{} {}: CALL: {}'.format(self.rank1, self.rank2, amount))
-        else:
-            print('CALL: {}'.format(amount))
-
-    def log_raise(self, amount):
-        if self.rank1:
-            print('{} {}: BET: {}'.format(self.rank1, self.rank2, amount))
-        else:
-            print('BET: {}'.format(amount))
+#    def log_check(self):
+#        if self.rank1:
+#            print('{} {}: CHECK only'.format(self.rank1, self.rank2))
+#        else:
+#            print('CHECK only')
+#
+#    def log_call(self, amount):
+#        if self.rank1:
+#            print('{} {}: CALL: {}'.format(self.rank1, self.rank2, amount))
+#        else:
+#            print('CALL: {}'.format(amount))
+#
+#    def log_raise(self, amount):
+#        if self.rank1:
+#            print('{} {}: BET: {}'.format(self.rank1, self.rank2, amount))
+#        else:
+#            print('BET: {}'.format(amount))
