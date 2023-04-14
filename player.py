@@ -55,7 +55,7 @@ class Player:
 
             # Play before Flop
             if len(ccards) == 0:
-
+                print('own_cards')
                 # Set Ammount for Raise & Call
                 self.minimum_raise = game_state['minimum_raise'] if 'minimum_raise' in game_state else 0
                 self.ammount_call = current_buy_in - me['bet']
@@ -97,14 +97,17 @@ class Player:
 
             # Play Flop
             elif  len(ccards) == 3:
+                print('cc_flop')
                 self.bet_community()
 
             # Play Turn
             elif  len(ccards) == 4:
+                print('cc_turn')
                 self.bet_community()
 
             # Play River
             elif  len(ccards) == 5:
+                print('cc_river')
                 self.bet_community()
 
         # Always Check
