@@ -2,7 +2,7 @@ import random
 import calc_cards
 
 class Player:
-    VERSION = "Default Python folding player"
+    VERSION = "One Ring"
 
     MAX_BET = 500
 
