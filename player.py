@@ -169,23 +169,26 @@ class Player:
         if self.best_hand_card_1 == "Quad" or self.best_hand_card_2 == "Quad":
              self.best_hand = "Quad"
 
-        if self.best_hand == "Quad":
-            print('Quad with CCs 2000')
-            return 2000
-        elif self.best_hand == "Flush":
-            print('Flush with CCs 2000')
-            return 2000
-        elif self.best_hand == "FullHouse":
-            print('FullHouse with CCs 2000')
-            return 2000
-        elif self.best_hand == "Trippel":
-            print('Tripple with CCs' + str(self.minimum_raise + 200))
-            return (self.minimum_raise + 200)
-        elif self.best_hand == "2Pair":
-            print('2Pair with CCs' + str(self.minimum_raise + 100))
-            return (self.minimum_raise + 100)
-        elif self.best_hand == "Pair":
-            print('Pair with CCs' + str(self.minimum_raise + 50))
-            return (self.minimum_raise + 50)
+        bet_ammount = 0
 
-        return 0
+        if self.best_hand == "Quad":
+            print('Quad with CCs')
+            bet_ammount = 2000
+        elif self.best_hand == "Flush":
+            print('Flush with CCs')
+            bet_ammount = 2000
+        elif self.best_hand == "FullHouse":
+            print('FullHouse with CCs')
+            bet_ammount = 2000
+        elif self.best_hand == "Trippel":
+            print('Tripple with CCs')
+            bet_ammount = (self.minimum_raise + 200)
+        elif self.best_hand == "2Pair":
+            print('2Pair with CCs')
+            bet_ammount = (self.minimum_raise + 100)
+        elif self.best_hand == "Pair":
+            print('Pair with CCs')
+            bet_ammount = (self.minimum_raise + 50)
+
+        print('debug_test_bet' + str(bet_ammount))
+        return bet_ammount
