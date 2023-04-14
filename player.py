@@ -111,6 +111,7 @@ class Player:
                 self.bet_community()
 
         # Always Check
+        print('debug_darf_nie_kommen')
         return 0
 
     def showdown(self, game_state):
