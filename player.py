@@ -77,7 +77,7 @@ class Player:
 
                 # Play "pair" of suits
                 elif self.suit1 == self.suit2:
-                    if self.minimum_raise < 20:
+                    if self.minimum_raise < 300:
                         return 20
 
                 # Play low cards with no Aces
