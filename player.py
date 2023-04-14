@@ -57,8 +57,8 @@ class Player:
             elif  len(ccards) == 5:
                 # allways check
                 return 0
-            else:
-                return 0
+
+        return 0
         #amount = current_buy_in - me['bet']
         #if amount > self.MAX_BET and self.rank1 != self.rank2:
         #    print('CHECK only (HIGH bet)')
