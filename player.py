@@ -110,6 +110,9 @@ class Player:
                 self.csuits.append(self.suit1)
                 self.csuits.append(self.suit2)
 
+                print(print('debug_test_com' + str(self.cranks)))
+                print(print('debug_test_sui' + str(self.csuits)))
+
                 print('ccs_deployed')
                 self.bet_community()
 
