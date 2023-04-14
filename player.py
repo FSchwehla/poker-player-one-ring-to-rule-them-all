@@ -12,8 +12,8 @@ class Player:
 
         self.max_bet = 500
 
-        print('debug_test' + dir(game_state))
-        print('debug_test' + dir(game_state['community_cards']))
+        print('debug_test' + game_state)
+        print('debug_test' + game_state['community_cards'])
 
         cards = me['hole_cards']
         ccards = game_state['community_cards'] if 'community_cards' in game_state else 0
