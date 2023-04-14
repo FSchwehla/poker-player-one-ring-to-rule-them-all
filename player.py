@@ -14,7 +14,7 @@ class Player:
 
         cards = me['hole_cards']
         ccards = game_state['community_cards'] if 'community_cards' in game_state else 0
-
+        print('test_debug_ccards' + ccards)
         # Empty own Cards
         self.rank1 = None
         self.rank2 = None
