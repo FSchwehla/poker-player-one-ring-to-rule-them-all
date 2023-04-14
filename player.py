@@ -12,10 +12,12 @@ class Player:
 
         self.max_bet = 500
 
-        print('debug_test' + str(game_state))
-
         cards = me['hole_cards']
-        ccards = game_state['community_cards'] if 'community_cards' in game_state else 0
+        if 'community_cards' in game_state:
+            ccards = game_state['community_cards']
+            print('debug_test' + str(ccards))
+        else:
+            ccards = []
 
         # Empty own Cards
         self.rank1 = None
