@@ -4,6 +4,8 @@ import calc_cards
 class Player:
     VERSION = "Default Python folding player"
 
+    MAX_BET = 500
+
     def betRequest(self, game_state):
         print (game_state)
         in_action=game_state['in_action']
@@ -16,6 +18,8 @@ class Player:
         if len(cards) > 1:
             self.rank1 = cards[0]['rank']
             self.rank2 = cards[1]['rank']
+            self.suit1 = cards[0]['suit']
+            self.suit2 = cards[1]['suit']
             value = calc_cards.get_value(cards)
             if self.rank1 == self.rank2 and self.rank1 == 'A':
                 self.log_raise()
@@ -23,7 +27,10 @@ class Player:
             elif self.rank1 == self.rank2:
                 self.log_raise()
                 return 50
-            elif value < 8 and self.rank1 != 'A' and self.rank2 != 'A':
+            elif self.suit1 == self.suit2:
+                self.log_raise()
+                return 20
+            else:
                 self.log_check()
                 return 0 # check only, no raise
 
