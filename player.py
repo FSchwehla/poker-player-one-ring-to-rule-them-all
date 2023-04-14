@@ -114,13 +114,72 @@ class Player:
 
 
     def bet_community(self):
-        if self.rank1 != self.rank2:
-            for x in [self.rank1, self.rank2]:
-                if self.cranks.count(x) == 2:
-                    return self.minimum_raise + 50
-                if self.cranks.count(x) == 3:
-                    return self.minimum_raise + 100
-                if self.cranks.count(x) == 4:
-                    return self.minimum_raise + 500
+
+        self.best_hand = None
+        self.best_hand_card_1 = None
+        self.best_hand_card_2 = None
+
+        if self.rank1 == self.rank2:
+            if self.cranks.count(self.rank1) == 2:
+                self.best_hand_card_1 = "Pair"
+            if self.cranks.count(self.rank1) == 3:
+                self.best_hand_card_1 = "Trippel"
+            if self.cranks.count(self.rank1) == 4:
+                self.best_hand_card_1 = "Quad"
         else:
-            return 0
+            if self.cranks.count(self.rank2) == 2:
+                self.best_hand_card_2 = "Pair"
+            if self.cranks.count(self.rank2) == 3:
+                self.best_hand_card_2 = "Trippel"
+            if self.cranks.count(self.rank2) == 4:
+                self.best_hand_card_2 = "Quad"
+
+        if self.csuits.count(self.suit1) >= 5 or self.csuits.count(self.suit2) >= 5:
+            self.best_hand_card_1 = "Flush"
+
+
+        # Best Hand
+
+        # Pair
+
+        if self.best_hand_card_1 == "Pair" or self.best_hand_card_2 == "Pair":
+             self.best_hand = "Pair"
+
+        # 2 Pair
+        if self.best_hand_card_1 == "Pair" and self.best_hand_card_2 == "Pair":
+             self.best_hand = "2Pair"
+
+        # Full House
+        if (self.best_hand_card_1 == "Pair" and self.best_hand_card_2 == "Trippel") or (self.best_hand_card_2 == "Pair" and self.best_hand_card_1 == "Trippel"):
+             self.best_hand = "FullHouse"
+
+        # Tripple
+        if self.best_hand_card_1 == "Trippel" or self.best_hand_card_2 == "Trippel":
+             self.best_hand = "Trippel"
+
+
+        # Street
+
+        # Flush
+        if self.best_hand_card_1 == "Flush":
+             self.best_hand = "Flush"
+
+        # Quad
+        if self.best_hand_card_1 == "Quad" or self.best_hand_card_2 == "Quad":
+             self.best_hand = "Quad"
+
+
+        if self.best_hand == "Pair":
+            return self.minimum_raise + 50
+        elif self.best_hand == "2Pair":
+            return self.minimum_raise + 100
+        elif self.best_hand == "Trippel":
+            return self.minimum_raise + 200
+        elif self.best_hand == "FullHouse":
+            return 2000
+        elif self.best_hand == "Flush":
+            return 2000
+        elif self.best_hand == "Quad":
+            return 2000
+
+        return 0
