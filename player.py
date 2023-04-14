@@ -190,5 +190,5 @@ class Player:
             print('Pair with CCs')
             bet_ammount = (self.minimum_raise + 50)
 
-        print('debug_test_bet' + str(bet_ammount))
+        print('debug_test_bet' + str(bet_ammount) + str(self.best_hand))
         return bet_ammount
