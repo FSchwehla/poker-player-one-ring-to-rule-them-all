@@ -21,6 +21,8 @@ class Player:
         self.suit1 = None
         self.suit2 = None
 
+        print('test_log')
+
         # Define best hand
         self.hand_flop = None
         self.hand_turn = None
@@ -155,9 +157,6 @@ class Player:
         # Tripple
         if self.best_hand_card_1 == "Trippel" or self.best_hand_card_2 == "Trippel":
              self.best_hand = "Trippel"
-
-
-        # Street
 
         # Flush
         if self.best_hand_card_1 == "Flush":
