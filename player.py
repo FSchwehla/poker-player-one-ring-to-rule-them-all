@@ -102,6 +102,14 @@ class Player:
 
             # Play Flop
             else:
+                for ccard in ccards:
+                    self.cranks.append(ccard['rank'])
+                    self.csuits.append(ccard['suit'])
+                self.cranks.append(self.rank1)
+                self.cranks.append(self.rank2)
+                self.csuits.append(self.suit1)
+                self.csuits.append(self.suit2)
+
                 print('ccs_deployed')
                 self.bet_community()
 
