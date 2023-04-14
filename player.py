@@ -13,6 +13,7 @@ class Player:
         self.max_bet = 500
 
         cards = me['hole_cards']
+
         if 'community_cards' in game_state:
             ccards = game_state['community_cards']
             print('debug_test' + str(ccards))
@@ -49,6 +50,9 @@ class Player:
             self.cranks.append(self.rank2)
             self.csuits.append(self.suit1)
             self.csuits.append(self.suit2)
+
+            print(print('debug_test' + str(self.cranks)))
+            print(print('debug_test' + str(self.csuits)))
 
         # Set own Cards to array
 
