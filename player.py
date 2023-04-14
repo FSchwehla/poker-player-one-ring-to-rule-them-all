@@ -13,7 +13,7 @@ class Player:
         current_buy_in=game_state['current_buy_in']
 
         cards = me['hole_cards']
-        ccards = me['community_cards']
+        ccards = game_state['community_cards']
         self.rank1 = None
         self.rank2 = None
         self.suit1 = None
@@ -50,6 +50,15 @@ class Player:
         elif len(cards) == 2 and len(ccards) == 3:
             # allways check
             return 0
+
+        elif len(cards) == 2 and len(ccards) == 4:
+            # allways check
+            return 0
+
+        elif len(cards) == 2 and len(ccards) == 5:
+            # allways check
+            return 0
+
 
 
 
