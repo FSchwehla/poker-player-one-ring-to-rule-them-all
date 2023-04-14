@@ -41,6 +41,7 @@ class Player:
         # Set Ranks and Suits in Array
         if len(ccards) == 0:
             for ccard in ccards:
+                print('debug_test' + ccard['rank'])
                 self.cranks.append(ccard['rank'])
                 self.csuits.append(ccard['suit'])
             self.cranks.append(self.rank1)
