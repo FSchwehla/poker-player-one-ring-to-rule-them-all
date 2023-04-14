@@ -180,12 +180,12 @@ class Player:
             return 2000
         elif self.best_hand == "Trippel":
             print('Tripple with CCs' + str(self.minimum_raise + 200))
-            return self.minimum_raise + 200
+            return (self.minimum_raise + 200)
         elif self.best_hand == "2Pair":
             print('2Pair with CCs' + str(self.minimum_raise + 100))
-            return self.minimum_raise + 100
+            return (self.minimum_raise + 100)
         elif self.best_hand == "Pair":
             print('Pair with CCs' + str(self.minimum_raise + 50))
-            return self.minimum_raise + 50
+            return (self.minimum_raise + 50)
 
         return 0
