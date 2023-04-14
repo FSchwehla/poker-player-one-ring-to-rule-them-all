@@ -56,20 +56,18 @@ class Player:
 
         # Set own Cards to array
 
+        self.minimum_raise = game_state['minimum_raise'] if 'minimum_raise' in game_state else 0
+        self.ammount_call = current_buy_in - me['bet']
+
+        # Set calculated value for own cards
+        value = calc_cards.get_value(cards)
 
         if len(cards) == 2 and 'community_cards' in game_state:
-
 
             # Play before Flop
             if len(ccards) == 0:
                 print('own_cards')
-                # Set Ammount for Raise & Call
-                self.minimum_raise = game_state['minimum_raise'] if 'minimum_raise' in game_state else 0
-                self.ammount_call = current_buy_in - me['bet']
-
-                # Set calculated value for own cards
-                value = calc_cards.get_value(cards)
-
+                
                 # Double Aces
                 if self.rank1 == self.rank2 and self.rank1 == 'A':
                     return  self.minimum_raise + 100
