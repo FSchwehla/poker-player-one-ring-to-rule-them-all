@@ -19,7 +19,7 @@ class Player:
         self.rank1 = None
         self.rank2 = None
         self.suit1 = None
-        self.rank2 = None
+        self.suit2 = None
 
         # Define best hand
         self.hand_flop = None
@@ -35,12 +35,13 @@ class Player:
             for ccard in ccards:
                 self.cranks.append(ccard['rank'])
                 self.csuits.append(ccard['suit'])
+            self.cranks.append(self.rank1)
+            self.cranks.append(self.rank2)
+            self.csuits.append(self.suit1)
+            self.csuits.append(self.suit2)
 
         # Set own Cards to array
-        self.cranks.append(self.rank1)
-        self.cranks.append(self.rank2)
-        self.csuits.append(self.suit1)
-        self.csuits.append(self.suit2)
+
 
         if len(cards) == 2 and 'community_cards' in game_state:
 
@@ -89,39 +90,29 @@ class Player:
 
             # Play Flop
             elif  len(ccards) == 3:
-                if self.rank1 != self.rank2:
-                    for x in [self.rank1, self.rank2]:
-                        if self.cranks.count(x) == 3:
-                            return 100
-                        if self.cranks.count(x) == 4:
-                            return 500
-                else:
-                    return 0
+                self.bet_community()
 
             # Play Turn
             elif  len(ccards) == 4:
-                if self.rank1 != self.rank2:
-                    for x in [self.rank1, self.rank2]:
-                        if self.cranks.count(x) == 3:
-                            return 100
-                        if self.cranks.count(x) == 4:
-                            return 500
-                else:
-                    return 0
+                self.bet_community()
 
-            # PLay River
+            # Play River
             elif  len(ccards) == 5:
-                if self.rank1 != self.rank2:
-                    for x in [self.rank1, self.rank2]:
-                        if self.cranks.count(x) == 3:
-                            return 100
-                        if self.cranks.count(x) == 4:
-                            return 500
-                else:
-                    return 0
+                self.bet_community()
 
         # Always Check
         return 0
 
     def showdown(self, game_state):
         return True
+
+
+    def bet_community(self):
+        if self.rank1 != self.rank2:
+            for x in [self.rank1, self.rank2]:
+                if self.cranks.count(x) == 3:
+                    return 100
+                if self.cranks.count(x) == 4:
+                    return 500
+        else:
+            return 0
