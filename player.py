@@ -73,18 +73,22 @@ class Player:
 
                 # Play pair of low cards
                 elif self.rank1 == self.rank2:
-                    if self.minimum_raise < 50:
-                        return 50
+                    return 50
 
                 # Play "pair" of suits
                 elif self.suit1 == self.suit2:
                     if self.minimum_raise < 20:
                         return 20
 
-                # Play low cards with one Ace
+                # Play low cards with no Aces
                 elif value < 8 and (self.rank1 != 'A' or self.rank2 != 'A'):
                     if self.minimum_raise < 10:
                         return 10
+
+                # Play low cards with one Ace
+                elif value < 8 and (self.rank1 == 'A' or self.rank2 == 'A'):
+                    if self.minimum_raise < 200:
+                        return  self.minimum_raise + 75
 
 
                 #elif current_buy_in < self.max_bet:
