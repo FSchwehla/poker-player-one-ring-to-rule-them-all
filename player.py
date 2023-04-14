@@ -15,26 +15,33 @@ class Player:
         cards = me['hole_cards']
         self.rank1 = None
         self.rank2 = None
+        self.suit1 = None
+        self.rank2 = None
         if len(cards) > 1:
+
+            self.minimum_raise = game_state['minimum_raise'] if 'minimum_raise' in game_state else 0
+
             self.rank1 = cards[0]['rank']
             self.rank2 = cards[1]['rank']
             self.suit1 = cards[0]['suit']
             self.suit2 = cards[1]['suit']
+
             value = calc_cards.get_value(cards)
             if self.rank1 == self.rank2 and self.rank1 == 'A':
                 self.log_raise()
-                return 250
+                return  self.minimum_raise + 100
+            elif self.rank1 == self.rank2 and (self.rank1 == 'K' or self.rank1 == 'Q' or self.rank1 == 'J'):
+                self.log_raise()
+                return  self.minimum_raise + 75
             elif self.rank1 == self.rank2:
                 self.log_raise()
                 return 50
             elif self.suit1 == self.suit2:
                 self.log_raise()
                 return 20
-            else:
-                self.log_check()
-                return 0 # check only, no raise
-
-        minimum_raise = game_state['minimum_raise'] if 'minimum_raise' in game_state else 0
+            elif value < 8 and (self.rank1 != 'A' or self.rank2 != 'A'):
+                self.log_raise()
+                return 10
 
         amount = current_buy_in - me['bet']
         if amount > self.MAX_BET and self.rank1 != self.rank2:
@@ -42,7 +49,7 @@ class Player:
             return 0 # fold
 
         if len(cards) > 1:
-            r = minimum_raise + random.random()*10 if random.random()>0.3 else 0
+            r = self.minimum_raise + random.random()*10 if random.random()>0.3 else 0
             amount += int(r)
         self.log_call(amount)
         return amount # always call
