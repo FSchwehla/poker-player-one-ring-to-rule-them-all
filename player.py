@@ -73,23 +73,23 @@ class Player:
 
                 # Play pair of low cards
                 elif self.rank1 == self.rank2:
-                    return 50
+                    return self.minimum_raise + 50
 
                 # Play "pair" of suits
                 elif self.suit1 == self.suit2:
                     if self.minimum_raise < 300:
-                        return 20
+                        return self.minimum_raise + 20
 
-                # Play low cards with no Aces
-                elif value < 8 and (self.rank1 != 'A' or self.rank2 != 'A'):
-                    if self.minimum_raise < 10:
-                        return 10
 
                 # Play low cards with one Ace
                 elif  self.rank1 == 'A' or self.rank2 == 'A':
                     if self.minimum_raise < 200:
                         return  self.minimum_raise + 75
 
+                # Play low cards with no Aces
+                elif value < 8 and (self.rank1 != 'A' or self.rank2 != 'A'):
+                    if self.minimum_raise < 10:
+                        return 10
 
                 #elif current_buy_in < self.max_bet:
                 #    return self.ammount_call
@@ -116,9 +116,11 @@ class Player:
     def bet_community(self):
         if self.rank1 != self.rank2:
             for x in [self.rank1, self.rank2]:
+                if self.cranks.count(x) == 2:
+                    return self.minimum_raise + 50
                 if self.cranks.count(x) == 3:
-                    return 100
+                    return self.minimum_raise + 100
                 if self.cranks.count(x) == 4:
-                    return 500
+                    return self.minimum_raise + 500
         else:
             return 0
