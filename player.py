@@ -13,11 +13,12 @@ class Player:
         current_buy_in=game_state['current_buy_in']
 
         cards = me['hole_cards']
+        ccards = me['community_cards']
         self.rank1 = None
         self.rank2 = None
         self.suit1 = None
         self.rank2 = None
-        if len(cards) > 1:
+        if len(cards) == 2 and len(ccards) == 0:
 
             self.minimum_raise = game_state['minimum_raise'] if 'minimum_raise' in game_state else 0
 
@@ -46,16 +47,22 @@ class Player:
                 if self.minimum_raise < 10:
                     return 10
 
-        amount = current_buy_in - me['bet']
-        if amount > self.MAX_BET and self.rank1 != self.rank2:
-            print('CHECK only (HIGH bet)')
-            return 0 # fold
+        elif len(cards) == 2 and len(ccards) == 3:
+            # allways check
+            return 0
 
-        if len(cards) > 1:
-            r = self.minimum_raise + random.random()*10 if random.random()>0.3 else 0
-            amount += int(r)
-        #self.log_call(amount)
-        return amount # always call
+
+
+        #amount = current_buy_in - me['bet']
+        #if amount > self.MAX_BET and self.rank1 != self.rank2:
+        #    print('CHECK only (HIGH bet)')
+        #    return 0 # fold
+
+        #if len(cards) > 1:
+        #    r = self.minimum_raise + random.random()*10 if random.random()>0.3 else 0
+        #    amount += int(r)
+        ##self.log_call(amount)
+        #return amount # always call
 
     def showdown(self, game_state):
         return True
