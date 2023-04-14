@@ -86,7 +86,7 @@ class Player:
                         return 10
 
                 # Play low cards with one Ace
-                elif value < 8 and (self.rank1 == 'A' or self.rank2 == 'A'):
+                elif  self.rank1 == 'A' or self.rank2 == 'A':
                     if self.minimum_raise < 200:
                         return  self.minimum_raise + 75
 
