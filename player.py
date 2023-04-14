@@ -80,7 +80,6 @@ class Player:
                     if self.minimum_raise < 300:
                         return self.minimum_raise + 20
 
-
                 # Play low cards with one Ace
                 elif  self.rank1 == 'A' or self.rank2 == 'A':
                     if self.minimum_raise < 200:
@@ -88,7 +87,7 @@ class Player:
 
                 # Play low cards with no Aces
                 elif value < 8 and (self.rank1 != 'A' or self.rank2 != 'A'):
-                    if self.minimum_raise < 10:
+                    if self.minimum_raise < 30:
                         return 10
 
                 #elif current_buy_in < self.max_bet:
@@ -170,16 +169,22 @@ class Player:
 
 
         if self.best_hand == "Pair":
+            print('Pair with CCs')
             return self.minimum_raise + 50
         elif self.best_hand == "2Pair":
+            print('2Pair with CCs')
             return self.minimum_raise + 100
         elif self.best_hand == "Trippel":
+            print('Tripple with CCs')
             return self.minimum_raise + 200
         elif self.best_hand == "FullHouse":
+            print('FullHouse with CCs')
             return 2000
         elif self.best_hand == "Flush":
+            print('Flush with CCs')
             return 2000
         elif self.best_hand == "Quad":
+            print('Quad with CCs')
             return 2000
 
         return 0
