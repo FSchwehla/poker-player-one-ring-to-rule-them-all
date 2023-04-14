@@ -52,6 +52,10 @@ class Player:
 
 
         if len(cards) == 2 and 'community_cards' in game_state:
+            print('debug_one_ring_cranks')
+            print(self.cranks)
+            print('debug_one_ring_csuits')
+            print(self.csuits)
 
             # Play before Flop
             if len(ccards) == 0:
