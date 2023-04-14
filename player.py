@@ -28,21 +28,21 @@ class Player:
 
             value = calc_cards.get_value(cards)
             if self.rank1 == self.rank2 and self.rank1 == 'A':
-                self.log_raise()
+                #self.log_raise()
                 return  self.minimum_raise + 100
             elif self.rank1 == self.rank2 and (self.rank1 == 'K' or self.rank1 == 'Q' or self.rank1 == 'J'):
-                self.log_raise()
+                #self.log_raise()
                 return  self.minimum_raise + 75
             elif self.rank1 == self.rank2:
-                self.log_raise()
+                #self.log_raise()
                 if self.minimum_raise < 50:
                     return 50
             elif self.suit1 == self.suit2:
-                self.log_raise()
+                #self.log_raise()
                 if self.minimum_raise < 20:
                     return 20
             elif value < 8 and (self.rank1 != 'A' or self.rank2 != 'A'):
-                self.log_raise()
+                #self.log_raise()
                 if self.minimum_raise < 10:
                     return 10
 
@@ -54,7 +54,7 @@ class Player:
         if len(cards) > 1:
             r = self.minimum_raise + random.random()*10 if random.random()>0.3 else 0
             amount += int(r)
-        self.log_call(amount)
+        #self.log_call(amount)
         return amount # always call
 
     def showdown(self, game_state):
