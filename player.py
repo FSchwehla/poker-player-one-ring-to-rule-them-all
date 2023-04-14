@@ -30,6 +30,12 @@ class Player:
         self.cranks = []
         self.csuits = []
 
+        # Set rank & suit for own hands
+        self.rank1 = cards[0]['rank']
+        self.rank2 = cards[1]['rank']
+        self.suit1 = cards[0]['suit']
+        self.suit2 = cards[1]['suit']
+
         # Set Ranks and Suits in Array
         if len(ccards) == 0:
             for ccard in ccards:
@@ -52,11 +58,7 @@ class Player:
                 self.minimum_raise = game_state['minimum_raise'] if 'minimum_raise' in game_state else 0
                 self.ammount_call = current_buy_in - me['bet']
 
-                # Set rank & suit for own hands
-                self.rank1 = cards[0]['rank']
-                self.rank2 = cards[1]['rank']
-                self.suit1 = cards[0]['suit']
-                self.suit2 = cards[1]['suit']
+
 
                 # Set calculated value for own cards
                 value = calc_cards.get_value(cards)
