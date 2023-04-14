@@ -10,8 +10,6 @@ class Player:
         me=game_state['players'][in_action]
         current_buy_in=game_state['current_buy_in']
 
-        self.max_bet = 500
-
         cards = me['hole_cards']
 
         if 'community_cards' in game_state:
@@ -67,7 +65,7 @@ class Player:
             # Play before Flop
             if len(ccards) == 0:
                 print('own_cards')
-                
+
                 # Double Aces
                 if self.rank1 == self.rank2 and self.rank1 == 'A':
                     return  self.minimum_raise + 100
@@ -95,8 +93,6 @@ class Player:
                     if self.minimum_raise < 30:
                         return 10
 
-                #elif current_buy_in < self.max_bet:
-                #    return self.ammount_call
 
             # Play Flop
             else:
@@ -174,22 +170,22 @@ class Player:
              self.best_hand = "Quad"
 
         if self.best_hand == "Quad":
-            print('Quad with CCs')
+            print('Quad with CCs 2000')
             return 2000
         elif self.best_hand == "Flush":
-            print('Flush with CCs')
+            print('Flush with CCs 2000')
             return 2000
         elif self.best_hand == "FullHouse":
-            print('FullHouse with CCs')
+            print('FullHouse with CCs 2000')
             return 2000
         elif self.best_hand == "Trippel":
-            print('Tripple with CCs')
+            print('Tripple with CCs' + str(self.minimum_raise + 200))
             return self.minimum_raise + 200
         elif self.best_hand == "2Pair":
-            print('2Pair with CCs')
+            print('2Pair with CCs' + str(self.minimum_raise + 100))
             return self.minimum_raise + 100
         elif self.best_hand == "Pair":
-            print('Pair with CCs')
+            print('Pair with CCs' + str(self.minimum_raise + 50))
             return self.minimum_raise + 50
 
         return 0
