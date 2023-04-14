@@ -108,7 +108,7 @@ class Player:
                 print(print('debug_test_sui' + str(self.csuits)))
 
                 print('ccs_deployed')
-                self.bet_community()
+                return self.bet_community()
 
         # Always Check
         print('debug_darf_nie_kommen')
