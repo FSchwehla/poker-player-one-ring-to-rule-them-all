@@ -167,24 +167,23 @@ class Player:
         if self.best_hand_card_1 == "Quad" or self.best_hand_card_2 == "Quad":
              self.best_hand = "Quad"
 
-
-        if self.best_hand == "Pair":
-            print('Pair with CCs')
-            return self.minimum_raise + 50
-        elif self.best_hand == "2Pair":
-            print('2Pair with CCs')
-            return self.minimum_raise + 100
-        elif self.best_hand == "Trippel":
-            print('Tripple with CCs')
-            return self.minimum_raise + 200
-        elif self.best_hand == "FullHouse":
-            print('FullHouse with CCs')
+        if self.best_hand == "Quad":
+            print('Quad with CCs')
             return 2000
         elif self.best_hand == "Flush":
             print('Flush with CCs')
             return 2000
-        elif self.best_hand == "Quad":
-            print('Quad with CCs')
+        elif self.best_hand == "FullHouse":
+            print('FullHouse with CCs')
             return 2000
+        elif self.best_hand == "Trippel":
+            print('Tripple with CCs')
+            return self.minimum_raise + 200
+        elif self.best_hand == "2Pair":
+            print('2Pair with CCs')
+            return self.minimum_raise + 100
+        elif self.best_hand == "Pair":
+            print('Pair with CCs')
+            return self.minimum_raise + 50
 
         return 0
